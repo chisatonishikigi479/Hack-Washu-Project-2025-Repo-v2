@@ -14,6 +14,13 @@ func _process(delta):
 
 
 func _on_button_pressed() -> void:
+	if GlobalData.mood_data_points.size() == 0:
+		GlobalData.mood_data_points.append(0.5)
+	
+	if GlobalData.mood_time_stamps.size() == 0:
+		GlobalData.mood_time_stamps.append(GlobalData.currTime)
+		
+	GlobalData.mood_time_stamps[0] = GlobalData.currTime
 	get_tree().change_scene_to_file("res://HomeScreen.tscn")
 	pass # Replace with function body.
 
@@ -21,8 +28,10 @@ func _on_button_pressed() -> void:
 func _on_initial_slider_value_changed(value: float) -> void:
 	if GlobalData.mood_data_points.size() == 0:
 		GlobalData.mood_data_points.append(value)
+		GlobalData.mood_time_stamps.append(GlobalData.currTime)
 	else:
 		GlobalData.mood_data_points[0] = value
+		GlobalData.mood_time_stamps[0] = GlobalData.currTime
 	print(GlobalData.mood_data_points[0])
 	var theValue = GlobalData.mood_data_points[0] 
 	

@@ -23,8 +23,11 @@ func _on_submit_button_pressed() -> void:
 		var feelingslider = $TellMeAboutYourDayContainer/FeelingSlider
 		GlobalData.mood_data_points.append(feelingslider.value)
 		GlobalData.prompt_responses_during_day.append(textbox.text)
+		GlobalData.mood_time_stamps.append(GlobalData.currTime)
 		print(GlobalData.prompt_responses_during_day)
 		print(GlobalData.mood_data_points)
+		print(GlobalData.mood_time_stamps)
+
 		GlobalData.cooldown = true
 		textbox.text = ""
 	else: 

@@ -6,6 +6,7 @@ var username = ""
 var sentiment_goal = 0.5 #between 0.0 and 1.0 inclusive
 
 var mood_data_points: Array = [] #indexed starting from 0
+var mood_time_stamps: Array = [] #indexed starting frmo 0
 
 var prompt_responses_during_day: Array = [] #array of strings
 
