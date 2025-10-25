@@ -10,8 +10,8 @@ var setVariables = false
 var record_items = []
 
 func _ready():
-	var numEntries = GlobalData.prompt_responses_during_day.size()-1
-	pages = max(1, ceil(numEntries / 4))
+	var numEntries = GlobalData.prompt_responses_during_day.size() - 1
+	pages = ceil((numEntries-1) / 4) + 1
 	generate_records()
 	pass
 
@@ -21,6 +21,8 @@ func _on_back_button_pressed() -> void:
 
 
 func _process(delta):
+	var numEntries = GlobalData.prompt_responses_during_day.size()-1
+	pages = ceil((numEntries-1) / 4) + 1
 	$PrevPage.disabled = (pageNum <= 0)
 	$NextPage.disabled = (pageNum >= pages-1)
 	
@@ -33,7 +35,7 @@ func _process(delta):
 	
 func generate_records():
 	for record_item in record_items:
-		record_items.queue_free()	
+		record_item.queue_free()	
 	record_items = []
 	for i in range (4):
 		var currIndex = 4*pageNum + i + 1
