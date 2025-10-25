@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0f1g2707801f"]
+[gd_scene load_steps=3 format=3 uid="uid://b0f1g2707801f"]
 
 [ext_resource type="Script" uid="uid://by5vhtyd1bggc" path="res://bedtime_slider_container.gd" id="1_8iiu4"]
+[ext_resource type="Script" uid="uid://gta3umfr1da2" path="res://wakeup_slider_container.gd" id="2_e6v8l"]
 
 [node name="Settings" type="Node2D"]
 
@@ -13,7 +14,7 @@ offset_top = 45.0
 offset_right = 350.0
 offset_bottom = 92.0
 min_value = 1200.0
-max_value = 1440.0
+max_value = 1560.0
 value = 1200.0
 
 [node name="BedtimeLabel" type="RichTextLabel" parent="BedtimeSliderContainer"]
@@ -33,5 +34,36 @@ offset_bottom = 68.0
 theme_override_font_sizes/normal_font_size = 40
 text = "Set Bedtime"
 
+[node name="WakeupSliderContainer" type="Node2D" parent="."]
+position = Vector2(0, 150)
+script = ExtResource("2_e6v8l")
+
+[node name="WakeupSlider" type="HSlider" parent="WakeupSliderContainer"]
+offset_left = 58.0
+offset_top = 45.0
+offset_right = 350.0
+offset_bottom = 92.0
+min_value = 240.0
+max_value = 600.0
+value = 360.0
+
+[node name="WakeupLabel" type="RichTextLabel" parent="WakeupSliderContainer"]
+offset_left = 148.0
+offset_top = 80.0
+offset_right = 343.0
+offset_bottom = 145.0
+theme_override_font_sizes/mono_font_size = 80
+theme_override_font_sizes/normal_font_size = 40
+text = "6:00AM"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WakeupSliderContainer"]
+offset_left = 44.0
+offset_top = 1.0
+offset_right = 395.0
+offset_bottom = 66.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Set Wake up time"
+
 [connection signal="drag_ended" from="BedtimeSliderContainer/BedtimeSlider" to="BedtimeSliderContainer" method="_on_bedtime_slider_drag_ended"]
 [connection signal="value_changed" from="BedtimeSliderContainer/BedtimeSlider" to="BedtimeSliderContainer" method="_on_bedtime_slider_value_changed"]
+[connection signal="value_changed" from="WakeupSliderContainer/WakeupSlider" to="WakeupSliderContainer" method="_on_wakeup_slider_value_changed"]
