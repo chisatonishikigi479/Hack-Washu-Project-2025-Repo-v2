@@ -6,10 +6,10 @@
 script = ExtResource("1_myj6d")
 
 [node name="BackButton" type="Button" parent="."]
-offset_left = 12.0
-offset_top = 18.0
-offset_right = 156.0
-offset_bottom = 76.0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 120.0
+offset_bottom = 48.0
 theme_override_font_sizes/font_size = 25
 text = "Go Back"
 
