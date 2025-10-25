@@ -22,6 +22,6 @@ func _process(delta):
 		elif mood >= 0.8 and mood <= 1.0:
 			comment = "very cheerful"
 		$MoodLabel.text = "Mood: " + str(int(mood * 100.0)) + "%" + " (" + comment + ")"
-		$ExplanationLabel.text = GlobalData.prompt_responses_during_day[index]
+		$ExplanationLabel.text = "Your Thoughts: " + "\"" + GlobalData.prompt_responses_during_day[index] + "\""
 		
 		setVariables = true

@@ -6,6 +6,8 @@ var pages = 1
 
 var setVariables = false
 
+var sortByNewest = false
+
 @onready var record_item = preload("res://record_item.tscn")
 var record_items = []
 
@@ -38,6 +40,7 @@ func generate_records():
 		record_item.queue_free()	
 	record_items = []
 	for i in range (4):
+		
 		var currIndex = 4*pageNum + i + 1
 		if currIndex < GlobalData.prompt_responses_during_day.size():
 			var item = record_item.instantiate()
