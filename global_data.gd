@@ -1,7 +1,7 @@
 extends Node
 #track time in minutes elapsed from 00:00
-var bedtime = 1380
-var wakeUpTime = 480 #default values
+var bedtime = 1320
+var wakeUpTime = 360 #default values
 var username = ""
 var sentiment_goal = 0.5 #between 0.0 and 1.0 inclusive
 
