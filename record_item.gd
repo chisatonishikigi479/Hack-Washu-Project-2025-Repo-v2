@@ -8,7 +8,7 @@ var index = 0
 var setVariables = false
 func _process(delta):
 	if not setVariables:
-		$Timestamp.text = "Timestamp: " + GlobalData.minutes_to_time_string(GlobalData.mood_time_stamps[index])
+		$TimestampLabel.text = "Timestamp: " + GlobalData.minutes_to_time_string(GlobalData.mood_time_stamps[index])
 		var mood = GlobalData.mood_data_points[index]
 		var comment = ""
 		if mood <= 0.2:
