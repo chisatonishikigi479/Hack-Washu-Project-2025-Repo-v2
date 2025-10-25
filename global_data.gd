@@ -46,6 +46,8 @@ func _process(delta: float):
 		if currTime - cooldownstarted >= cooldownminutes:
 			cooldown = false
 			cooldownstartedbool = false
+			
+	print("current mood: " + str(interpolate_mood_lagrange_clamped(GlobalData.currTime)))
 		
 		
 	
@@ -54,3 +56,27 @@ func get_current_weekday() -> String:
 	var weekday = date_dict["weekday"]
 	var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 	return weekdays[weekday]
+
+
+func interpolate_mood_lagrange_clamped(current_time: float) -> float:
+	if mood_time_stamps.size() < 2:
+		if mood_data_points.size() > 0:
+			return mood_data_points[mood_data_points.size() - 1]
+		else:
+			return 0.5
+	
+	var n = mood_time_stamps.size()
+	var result: float = 0.0
+	
+	# Perform Lagrange interpolation
+	for i in range(n):
+		var term = mood_data_points[i]
+		for j in range(n):
+			if i != j:
+				# Avoid division by zero
+				if mood_time_stamps[i] != mood_time_stamps[j]:
+					term *= (current_time - mood_time_stamps[j]) / (mood_time_stamps[i] - mood_time_stamps[j])
+		result += term
+	
+	# Force clamp the result between 0.0 and 1.0
+	return clamp(result, 0.0, 1.0)
