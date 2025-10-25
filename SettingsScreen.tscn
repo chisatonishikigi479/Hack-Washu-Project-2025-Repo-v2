@@ -1,3 +1,37 @@
-[gd_scene format=3 uid="uid://b0f1g2707801f"]
+[gd_scene load_steps=2 format=3 uid="uid://b0f1g2707801f"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" uid="uid://by5vhtyd1bggc" path="res://bedtime_slider_container.gd" id="1_8iiu4"]
+
+[node name="Settings" type="Node2D"]
+
+[node name="BedtimeSliderContainer" type="Node2D" parent="."]
+script = ExtResource("1_8iiu4")
+
+[node name="BedtimeSlider" type="HSlider" parent="BedtimeSliderContainer"]
+offset_left = 58.0
+offset_top = 45.0
+offset_right = 350.0
+offset_bottom = 92.0
+min_value = 1200.0
+max_value = 1440.0
+value = 1200.0
+
+[node name="BedtimeLabel" type="RichTextLabel" parent="BedtimeSliderContainer"]
+offset_left = 148.0
+offset_top = 80.0
+offset_right = 343.0
+offset_bottom = 145.0
+theme_override_font_sizes/mono_font_size = 80
+theme_override_font_sizes/normal_font_size = 40
+text = "8:00PM"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BedtimeSliderContainer"]
+offset_left = 78.0
+offset_top = 6.0
+offset_right = 347.0
+offset_bottom = 68.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Set Bedtime"
+
+[connection signal="drag_ended" from="BedtimeSliderContainer/BedtimeSlider" to="BedtimeSliderContainer" method="_on_bedtime_slider_drag_ended"]
+[connection signal="value_changed" from="BedtimeSliderContainer/BedtimeSlider" to="BedtimeSliderContainer" method="_on_bedtime_slider_value_changed"]
