@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://covtt6qa08acm"]
+
+[ext_resource type="Script" uid="uid://birl70kqd1svm" path="res://home_screen.gd" id="1_bu243"]
+[ext_resource type="Script" uid="uid://xp64a2c4qc6o" path="res://cooldown_notice.gd" id="2_iapcu"]
+
+[node name="HomeScreen" type="Node2D"]
+script = ExtResource("1_bu243")
+
+[node name="CurrentTimeLabel" type="RichTextLabel" parent="."]
+offset_left = 37.0
+offset_top = 12.0
+offset_right = 381.0
+offset_bottom = 64.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Current Time: "
+
+[node name="HistoryButton" type="Button" parent="."]
+offset_left = 205.0
+offset_top = 57.0
+offset_right = 398.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 20
+text = "Weather History..."
+
+[node name="TellMeAboutYourDayContainer" type="Node2D" parent="."]
+
+[node name="JournalBox" type="TextEdit" parent="TellMeAboutYourDayContainer"]
+offset_left = 51.0
+offset_top = 325.0
+offset_right = 354.0
+offset_bottom = 432.0
+placeholder_text = "Jot down any thoughts you have..."
+
+[node name="SubmitButton" type="Button" parent="TellMeAboutYourDayContainer"]
+offset_left = 118.0
+offset_top = 540.0
+offset_right = 290.0
+offset_bottom = 587.0
+theme_override_font_sizes/font_size = 30
+text = "Submit"
+
+[node name="Encouragement" type="RichTextLabel" parent="TellMeAboutYourDayContainer"]
+offset_left = 41.0
+offset_top = 251.0
+offset_right = 376.0
+offset_bottom = 328.0
+theme_override_font_sizes/normal_font_size = 27
+text = "Tell me something about your day..."
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TellMeAboutYourDayContainer"]
+offset_left = 41.0
+offset_top = 438.0
+offset_right = 390.0
+offset_bottom = 483.0
+theme_override_font_sizes/normal_font_size = 21
+text = "How are you feeling right now?"
+
+[node name="FeelingSlider" type="HSlider" parent="TellMeAboutYourDayContainer"]
+offset_left = 58.0
+offset_top = 469.0
+offset_right = 354.0
+offset_bottom = 512.0
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="FeelingComment" type="RichTextLabel" parent="TellMeAboutYourDayContainer"]
+offset_left = 133.0
+offset_top = 501.0
+offset_right = 277.0
+offset_bottom = 529.0
+text = "Neutral"
+horizontal_alignment = 1
+
+[node name="CooldownNotice" type="Node2D" parent="."]
+script = ExtResource("2_iapcu")
+
+[node name="Window" type="Window" parent="CooldownNotice"]
+title = "Notice"
+initial_position = 1
+size = Vector2i(200, 100)
+visible = false
+
+[node name="WindowLabel" type="RichTextLabel" parent="CooldownNotice/Window"]
+offset_right = 197.0
+offset_bottom = 61.0
+theme_override_font_sizes/normal_font_size = 17
+text = "Please wait 30 minutes until submitting again!"
+
+[node name="WindowDismissButton" type="Button" parent="CooldownNotice/Window"]
+offset_left = 33.0
+offset_top = 55.0
+offset_right = 166.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 25
+text = "Got it"
+
+[connection signal="pressed" from="HistoryButton" to="." method="_on_history_button_pressed"]
+[connection signal="pressed" from="TellMeAboutYourDayContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="value_changed" from="TellMeAboutYourDayContainer/FeelingSlider" to="." method="_on_feeling_slider_value_changed"]
+[connection signal="pressed" from="CooldownNotice/Window/WindowDismissButton" to="CooldownNotice" method="_on_window_dismiss_button_pressed"]
