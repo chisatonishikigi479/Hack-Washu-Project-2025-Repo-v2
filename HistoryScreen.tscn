@@ -47,6 +47,16 @@ theme_override_font_sizes/normal_font_size = 25
 text = "No Emotional Weather History for Today yet! Try recording some of your thoughts first :)
 "
 
+[node name="SortToggleButton" type="Button" parent="."]
+offset_left = 204.0
+offset_top = 6.0
+offset_right = 386.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+text = "Sorting By Oldest"
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="PrevPage" to="." method="_on_prev_page_pressed"]
 [connection signal="pressed" from="NextPage" to="." method="_on_next_page_pressed"]
+[connection signal="toggled" from="SortToggleButton" to="." method="_on_sort_toggle_button_toggled"]

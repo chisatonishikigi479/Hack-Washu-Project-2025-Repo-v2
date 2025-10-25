@@ -39,16 +39,29 @@ func generate_records():
 	for record_item in record_items:
 		record_item.queue_free()	
 	record_items = []
-	for i in range (4):
-		
-		var currIndex = 4*pageNum + i + 1
-		if currIndex < GlobalData.prompt_responses_during_day.size():
-			var item = record_item.instantiate()
-			item.global_position = Vector2(0, 60 + 120*i)
-			add_child(item)
-			item.index = currIndex
-			item.set_visible(true)
-			record_items.append(item)
+	
+	if not sortByNewest:
+		for i in range (4):
+			
+			var currIndex = 4*pageNum + i + 1
+			if currIndex < GlobalData.prompt_responses_during_day.size():
+				var item = record_item.instantiate()
+				item.global_position = Vector2(0, 60 + 120*i)
+				add_child(item)
+				item.index = currIndex
+				item.set_visible(true)
+				record_items.append(item)
+	
+	else:
+		for i in range (4):
+			var currIndex = GlobalData.prompt_responses_during_day.size() - 1 - (4*pageNum + i)
+			if currIndex < GlobalData.prompt_responses_during_day.size() and currIndex > 0:
+				var item = record_item.instantiate()
+				item.global_position = Vector2(0, 60 + 120*i)
+				add_child(item)
+				item.index = currIndex
+				item.set_visible(true)
+				record_items.append(item)
 			
 	
 	pass
@@ -63,4 +76,16 @@ func _on_next_page_pressed() -> void:
 func _on_prev_page_pressed() -> void:
 	pageNum = max(0, pageNum - 1)
 	generate_records()
+	pass # Replace with function body.
+
+
+func _on_sort_toggle_button_toggled(toggled_on: bool) -> void:
+	sortByNewest = toggled_on
+	if toggled_on:
+		$SortToggleButton.text = "Sorting by Newest"
+	else:
+		$SortToggleButton.text = "Sorting by Oldest"
+	pageNum = 0
+	generate_records()
+
 	pass # Replace with function body.
