@@ -25,9 +25,10 @@ func _on_submit_button_pressed() -> void:
 		GlobalData.prompt_responses_during_day.append(textbox.text)
 		print(GlobalData.prompt_responses_during_day)
 		print(GlobalData.mood_data_points)
+		GlobalData.cooldown = true
 	else: 
 		#add stuff
-		
+		$CooldownNotice/Window.visible = true
 		pass
 	pass # Replace with function body.
 

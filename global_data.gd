@@ -17,7 +17,7 @@ var cooldownminutes = 30.0
 
 @export var customSpeedMultiplier = 60.0 #change to 1.0 later
 
-func setup():
+func _ready():
 	prompt_responses_during_day.append("") #0-index prompt is automatically empty bc the app doesn't ask how you're feeling on the title screen
 	
 func minutes_to_time_string(minutes: float) -> String:
