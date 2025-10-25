@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dkc2yw0uygx2f"]
+
+[node name="RecordItem" type="Node2D"]
+
+[node name="WeatherIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(60, 85)
+
+[node name="MoodLabel" type="RichTextLabel" parent="."]
+offset_left = 136.0
+offset_top = 6.0
+offset_right = 387.0
+offset_bottom = 42.0
+text = "Mood: 50% (neutral)"

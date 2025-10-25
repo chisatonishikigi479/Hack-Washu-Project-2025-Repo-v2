@@ -12,7 +12,19 @@ func _process(delta):
 	$CurrentTimeLabel.text = "Current Time: " + GlobalData.minutes_to_time_string(GlobalData.currTime)
 	var estimated_mood = GlobalData.get_current_mood(GlobalData.currTime)
 	var estimated_mood_percent = round(estimated_mood * 100)
-	$EstimatedMoodLabel.text = "Estimated Current Mood: " + str(int(estimated_mood_percent)) + "%"
+	
+	var comment = ""
+	if estimated_mood <= 0.2:
+		comment = "very down"
+	elif estimated_mood > 0.2 and estimated_mood <= 0.4:
+		comment = "down"
+	elif estimated_mood > 0.4 and estimated_mood < 0.6:
+		comment = "neutral"
+	elif estimated_mood >= 0.6 and estimated_mood < 0.8:
+		comment = "cheerful"
+	elif estimated_mood >= 0.8 and estimated_mood <= 1.0:
+		comment = "very cheerful"
+	$EstimatedMoodLabel.text = "Estimated Current Mood: " + str(int(estimated_mood_percent)) + "%" + " (" + comment + ")"
 
 
 func _on_history_button_pressed() -> void:
