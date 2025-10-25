@@ -47,7 +47,7 @@ func _process(delta: float):
 			cooldown = false
 			cooldownstartedbool = false
 			
-	print("current mood: " + str(get_current_mood(GlobalData.currTime)))
+	#print("current mood: " + str(get_current_mood(GlobalData.currTime)))
 		
 		
 	

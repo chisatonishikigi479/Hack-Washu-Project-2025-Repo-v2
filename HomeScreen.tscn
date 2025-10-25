@@ -95,6 +95,13 @@ offset_bottom = 98.0
 theme_override_font_sizes/font_size = 25
 text = "Got it"
 
+[node name="EstimatedMoodLabel" type="RichTextLabel" parent="."]
+offset_left = 17.0
+offset_top = 54.0
+offset_right = 200.0
+offset_bottom = 113.0
+text = "Estimated Current Mood: 50% (neutral)"
+
 [connection signal="pressed" from="HistoryButton" to="." method="_on_history_button_pressed"]
 [connection signal="pressed" from="TellMeAboutYourDayContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
 [connection signal="value_changed" from="TellMeAboutYourDayContainer/FeelingSlider" to="." method="_on_feeling_slider_value_changed"]

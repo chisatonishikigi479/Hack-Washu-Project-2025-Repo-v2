@@ -10,6 +10,9 @@ func _process(delta):
 			$TellMeAboutYourDayContainer/Encouragement.text = "Tell me something about your day..."
 		dataHasBeenSet = true 
 	$CurrentTimeLabel.text = "Current Time: " + GlobalData.minutes_to_time_string(GlobalData.currTime)
+	var estimated_mood = GlobalData.get_current_mood(GlobalData.currTime)
+	var estimated_mood_percent = round(estimated_mood * 100)
+	$EstimatedMoodLabel.text = "Estimated Current Mood: " + str(int(estimated_mood_percent)) + "%"
 
 
 func _on_history_button_pressed() -> void:
