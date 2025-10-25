@@ -26,6 +26,7 @@ func _on_submit_button_pressed() -> void:
 		print(GlobalData.prompt_responses_during_day)
 		print(GlobalData.mood_data_points)
 		GlobalData.cooldown = true
+		textbox.text = ""
 	else: 
 		#add stuff
 		$CooldownNotice/Window.visible = true
