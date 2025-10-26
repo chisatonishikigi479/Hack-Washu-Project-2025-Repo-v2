@@ -14,9 +14,9 @@ text = "Current Time:"
 [node name="CongratsLabel" type="RichTextLabel" parent="."]
 visible = false
 offset_left = 6.0
-offset_top = 92.0
+offset_top = 51.0
 offset_right = 394.0
-offset_bottom = 267.0
+offset_bottom = 322.0
 theme_override_font_sizes/normal_font_size = 30
 text = "Congratulations, all your recorded events surpassed your mood goal for the day!"
 

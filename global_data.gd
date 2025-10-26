@@ -191,3 +191,41 @@ func catmull_rom_interpolate(t: float, times: Array, moods: Array, segment: int)
 	)
 	
 	return clamp(result, 0.0, 1.0)
+
+func basic_sentiment_analysis(text: String) -> float:
+	var lower_text = text.to_lower()
+	var positive_words = [
+		"good", "great", "excellent", "happy", "positive", "improve", "better", 
+		"best", "love", "like", "enjoy", "proud", "confident", "optimistic",
+		"hopeful", "excited", "grateful", "thankful", "blessed", "calm", "peaceful",
+		"relaxed", "content", "satisfied", "accomplished", "success", "win", "achievement",
+		"progress", "growth", "learn", "understanding", "solution", "resolve", "fix",
+		"help", "support", "care", "kind", "compassion", "empathy", "mindful"
+	]
+	var negative_words = [
+		"bad", "terrible", "awful", "sad", "negative", "worse", "worst", "hate",
+		"dislike", "angry", "mad", "frustrated", "annoyed", "upset", "disappointed",
+		"depressed", "anxious", "worried", "scared", "afraid", "fear", "stress",
+		"overwhelmed", "tired", "exhausted", "burnout", "failure", "mistake",
+		"problem", "issue", "difficult", "hard", "struggle", "challenge", "stuck",
+		"can't", "cannot", "won't", "unable", "impossible", "hopeless", "helpless"
+	]
+	var positive_count = 0
+	var negative_count = 0
+	for word in positive_words:
+		if lower_text.find(word) != -1:
+			positive_count += 1
+	for word in negative_words:
+		if lower_text.find(word) != -1:
+			negative_count += 1
+	var total_words = positive_count + negative_count
+	if total_words == 0:
+		return 0.5  
+	var raw_score = float(positive_count) / float(total_words)
+	var word_count = text.split(" ").size()
+	if word_count > 15:
+		raw_score = min(1.0, raw_score * 1.2)
+	elif word_count < 5:
+		raw_score = max(0.0, raw_score * 0.8)
+	
+	return clamp(raw_score, 0.0, 1.0)

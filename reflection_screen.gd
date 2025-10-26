@@ -11,6 +11,7 @@ var currFlaggedSubIndex = 0
 
 
 var total_sentiment_improvement = 0.0
+var successful_improvements = 0
 var curr_card_instance = null
 func _process(delta):
 	if int(GlobalData.currTime) == int(GlobalData.wakeUpTime):
@@ -44,8 +45,15 @@ func generate_improvement_card():
 func _on_improvement_card_submitted(improvement_text: String, card_index: int):
 	#do sentiment analysis
 	
-	print(improvement_text)
-	print(str(card_index))
+	var sentiment_score = GlobalData.basic_sentiment_analysis(improvement_text)
+	print("Improvement: ", improvement_text)
+	print("Card index: ", card_index)
+	print("Sentiment score: ", sentiment_score)
+
+	total_sentiment_improvement += sentiment_score - GlobalData.mood_data_points[card_index]
+	
+	if sentiment_score >= GlobalData.sentiment_goal:
+		successful_improvements += 1
 	
 	currFlaggedSubIndex = currFlaggedSubIndex + 1
 	if currFlaggedSubIndex < flaggedEventIndices.size():
@@ -57,8 +65,18 @@ func _on_improvement_card_submitted(improvement_text: String, card_index: int):
 
 
 func _on_all_improvement_cards_complete() -> void:
-	$CongratsLabel.text = "Congrats, you made an effort to improve all of your subpar events!"
-	#this message could depend on total_sentiment_improvement
+	var average_sentiment_improvement = total_sentiment_improvement / flaggedEventIndices.size() if flaggedEventIndices.size() > 0 else 0.0
+	var message = ""
+	if flaggedEventIndices.size() == 0:
+		message = "Congratulations, all your recorded events surpassed your mood goal for the day!!"
+	elif successful_improvements == flaggedEventIndices.size():
+		message = "Excellent! All your improvements met the sentiment goal! The rain has completely dissipated."
+	elif successful_improvements > flaggedEventIndices.size() / 2:
+		message = "Good job! The majority of your improvements were positive. The rain is lightening."
+	else:
+		message = "You at least put effort reflecting on your subpar events. Keep working on positive thinking!"
+	
+	$CongratsLabel.text = message
 	$CongratsLabel.visible = true
 	#do some more stuff
 	pass # Replace with function body.
