@@ -20,17 +20,19 @@ func _process(delta):
 		
 		if flaggedEventIndices.size() == 0:
 			$CongratsLabel.visible = true
+			$ImprovementCardProgress.visible = false
 		else:
 			generate_improvement_card()
 		
 		setVariables = true
 	
 	$TimeLabel.text = "Current Time: " + GlobalData.minutes_to_time_string(GlobalData.currTime)
+	$ImprovementCardProgress.text = "(" + str(currFlaggedSubIndex) + "/" + str(flaggedEventIndices.size()) +" completed)"
 
 func generate_improvement_card():
 	curr_card_instance = cardscene.instantiate()
 	curr_card_instance.index = flaggedEventIndices[currFlaggedSubIndex]
-	curr_card_instance.global_position = Vector2(0, 300)
+	curr_card_instance.global_position = Vector2(0, 275)
 	curr_card_instance.improvement_submitted.connect(self._on_improvement_card_submitted)
 	add_child(curr_card_instance)
 	curr_card_instance.visible = true
@@ -53,5 +55,7 @@ func _on_improvement_card_submitted(improvement_text: String, card_index: int):
 
 
 func _on_all_improvement_cards_complete() -> void:
+	$CongratsLabel.text = "Congrats, you made an effort to improve all of your subpar events!"
+	$CongratsLabel.visible = true
 	#do some more stuff
 	pass # Replace with function body.

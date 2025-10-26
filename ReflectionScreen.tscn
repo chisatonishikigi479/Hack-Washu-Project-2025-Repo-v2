@@ -20,4 +20,12 @@ offset_bottom = 267.0
 theme_override_font_sizes/normal_font_size = 30
 text = "Congratulations, all your recorded events surpassed your mood goal for the day!"
 
+[node name="ImprovementCardProgress" type="RichTextLabel" parent="."]
+offset_left = 96.0
+offset_top = 562.0
+offset_right = 355.0
+offset_bottom = 610.0
+theme_override_font_sizes/normal_font_size = 25
+text = "(1/1 completed)"
+
 [connection signal="all_improvement_cards_complete" from="." to="." method="_on_all_improvement_cards_complete"]
