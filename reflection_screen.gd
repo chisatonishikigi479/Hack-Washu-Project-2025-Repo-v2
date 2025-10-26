@@ -9,6 +9,8 @@ var currFlaggedSubIndex = 0
 
 @onready var cardscene = preload("res://improvement_card.tscn")
 
+
+var total_sentiment_improvement = 0.0
 var curr_card_instance = null
 func _process(delta):
 	if int(GlobalData.currTime) == int(GlobalData.wakeUpTime):
@@ -56,6 +58,7 @@ func _on_improvement_card_submitted(improvement_text: String, card_index: int):
 
 func _on_all_improvement_cards_complete() -> void:
 	$CongratsLabel.text = "Congrats, you made an effort to improve all of your subpar events!"
+	#this message could depend on total_sentiment_improvement
 	$CongratsLabel.visible = true
 	#do some more stuff
 	pass # Replace with function body.
