@@ -34,6 +34,7 @@ func _process(delta):
 	$TimeLabel.text = "Current Time: " + GlobalData.minutes_to_time_string(GlobalData.currTime)
 	$ImprovementCardProgress.text = "(" + str(currFlaggedSubIndex) + "/" + str(flaggedEventIndices.size()) +" completed)"
 	if flaggedEventIndices.size() > 0:
+		print("improvement ratio: " + str(improvement_ratio))
 		improvement_ratio = successful_improvements / flaggedEventIndices.size()
 		if improvement_ratio >= 0 and improvement_ratio <= 0.33:
 			$RainBG.play("heavyrain")
