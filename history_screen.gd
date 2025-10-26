@@ -32,6 +32,9 @@ func _process(delta):
 	
 	$NoWeatherHistoryLabel.visible = GlobalData.prompt_responses_during_day.size() < 2
 	
+	if int(GlobalData.currTime) == int(GlobalData.bedtime):
+		get_tree().change_scene_to_file("res://nighttime_screen.tscn")
+	
 	pass
 	
 	

@@ -6,9 +6,36 @@
 script = ExtResource("1_4gbvk")
 
 [node name="TimeLabel" type="RichTextLabel" parent="."]
-offset_left = 12.0
-offset_top = 3.0
-offset_right = 392.0
-offset_bottom = 66.0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 418.0
+offset_bottom = 85.0
 theme_override_font_sizes/normal_font_size = 35
 text = "Current Time: "
+
+[node name="HowTheDayEnded" type="RichTextLabel" parent="."]
+offset_left = 10.0
+offset_top = 90.0
+offset_right = 397.0
+offset_bottom = 328.0
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 32
+text = "Hi, you ended the day on a neutral note (50%). Before going to bed, now it's time to reflect. "
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 67.0
+offset_top = 336.0
+offset_right = 339.0
+offset_bottom = 427.0
+theme_override_font_sizes/font_size = 53
+text = "Continue"
+
+[node name="SentimentGoalInfo" type="RichTextLabel" parent="."]
+offset_left = 21.0
+offset_top = 449.0
+offset_right = 382.0
+offset_bottom = 606.0
+theme_override_font_sizes/normal_font_size = 32
+text = "(You beat your sentiment goal of 50% by 0%)"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

@@ -26,6 +26,8 @@ func _process(delta):
 		comment = "very cheerful"
 	$EstimatedMoodLabel.text = "Estimated Current Mood: " + str(int(estimated_mood_percent)) + "%" + " (" + comment + ")"
 
+	if int(GlobalData.currTime) == int(GlobalData.bedtime):
+		get_tree().change_scene_to_file("res://nighttime_screen.tscn")
 
 func _on_history_button_pressed() -> void:
 	get_tree().change_scene_to_file("HistoryScreen.tscn")
