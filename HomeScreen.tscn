@@ -1,7 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://covtt6qa08acm"]
+[gd_scene load_steps=10 format=3 uid="uid://covtt6qa08acm"]
 
 [ext_resource type="Script" uid="uid://birl70kqd1svm" path="res://home_screen.gd" id="1_bu243"]
 [ext_resource type="Script" uid="uid://xp64a2c4qc6o" path="res://cooldown_notice.gd" id="2_iapcu"]
+[ext_resource type="Texture2D" uid="uid://cj8fxhxyw4ouy" path="res://80% (2).png" id="3_4d5n3"]
+[ext_resource type="Texture2D" uid="uid://bnaabj482rb7u" path="res://0%.png" id="3_16mhu"]
+[ext_resource type="Texture2D" uid="uid://801lb2hdtsyf" path="res://20%.png" id="4_psypl"]
+[ext_resource type="Texture2D" uid="uid://lr38holj6044" path="res://100%.png" id="4_wrh72"]
+[ext_resource type="Texture2D" uid="uid://cjgtxnkdghfbu" path="res://40%.png" id="5_ksj1l"]
+[ext_resource type="Texture2D" uid="uid://0bqd24x6mlpd" path="res://60%.jpeg" id="6_3272g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_psypl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_16mhu")
+}],
+"loop": true,
+"name": &"weather0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wrh72")
+}],
+"loop": true,
+"name": &"weather100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_psypl")
+}],
+"loop": true,
+"name": &"weather20",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ksj1l")
+}],
+"loop": true,
+"name": &"weather40",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3272g")
+}],
+"loop": true,
+"name": &"weather60",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4d5n3")
+}],
+"loop": true,
+"name": &"weather80",
+"speed": 5.0
+}]
 
 [node name="HomeScreen" type="Node2D"]
 script = ExtResource("1_bu243")
@@ -101,6 +158,13 @@ offset_top = 54.0
 offset_right = 200.0
 offset_bottom = 113.0
 text = "Estimated Current Mood: 50% (neutral)"
+
+[node name="WeatherBG" type="AnimatedSprite2D" parent="."]
+z_index = -300
+position = Vector2(208, 303.5)
+scale = Vector2(0.81295, 0.913043)
+sprite_frames = SubResource("SpriteFrames_psypl")
+animation = &"weather40"
 
 [connection signal="pressed" from="HistoryButton" to="." method="_on_history_button_pressed"]
 [connection signal="pressed" from="TellMeAboutYourDayContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

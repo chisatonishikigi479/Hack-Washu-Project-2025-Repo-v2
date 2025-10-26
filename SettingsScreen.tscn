@@ -1,10 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0f1g2707801f"]
+[gd_scene load_steps=8 format=3 uid="uid://b0f1g2707801f"]
 
 [ext_resource type="Script" uid="uid://dewssrm1jyr0h" path="res://settings_screen.gd" id="1_2d4pm"]
 [ext_resource type="Script" uid="uid://by5vhtyd1bggc" path="res://bedtime_slider_container.gd" id="1_8iiu4"]
 [ext_resource type="Script" uid="uid://gta3umfr1da2" path="res://wakeup_slider_container.gd" id="2_e6v8l"]
 [ext_resource type="Script" uid="uid://ch5c8pbi66a8a" path="res://name_container.gd" id="3_11lt3"]
 [ext_resource type="Script" uid="uid://q04pb8kchah1" path="res://sentiment_goal_container.gd" id="4_0o71x"]
+[ext_resource type="Texture2D" uid="uid://dyvbg7cx1agud" path="res://monet2.jpg" id="6_qskxe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pe8ks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qskxe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Settings" type="Node2D"]
 script = ExtResource("1_2d4pm")
@@ -131,6 +143,12 @@ offset_top = 1.0
 offset_right = 98.0
 offset_bottom = 32.0
 text = "Go Back"
+
+[node name="BG" type="AnimatedSprite2D" parent="."]
+z_index = -500
+position = Vector2(86, 348)
+scale = Vector2(0.493182, 0.710104)
+sprite_frames = SubResource("SpriteFrames_pe8ks")
 
 [connection signal="drag_ended" from="BedtimeSliderContainer/BedtimeSlider" to="BedtimeSliderContainer" method="_on_bedtime_slider_drag_ended"]
 [connection signal="value_changed" from="BedtimeSliderContainer/BedtimeSlider" to="BedtimeSliderContainer" method="_on_bedtime_slider_value_changed"]

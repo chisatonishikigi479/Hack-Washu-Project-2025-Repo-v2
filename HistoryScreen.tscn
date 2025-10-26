@@ -1,6 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1yx5gajxc8lk"]
+[gd_scene load_steps=9 format=3 uid="uid://b1yx5gajxc8lk"]
 
 [ext_resource type="Script" uid="uid://ik772bpcj7xi" path="res://history_screen.gd" id="1_myj6d"]
+[ext_resource type="Texture2D" uid="uid://bnaabj482rb7u" path="res://0%.png" id="2_qdn6n"]
+[ext_resource type="Texture2D" uid="uid://lr38holj6044" path="res://100%.png" id="3_mfwf1"]
+[ext_resource type="Texture2D" uid="uid://801lb2hdtsyf" path="res://20%.png" id="4_50y8m"]
+[ext_resource type="Texture2D" uid="uid://cjgtxnkdghfbu" path="res://40%.png" id="5_3wq66"]
+[ext_resource type="Texture2D" uid="uid://0bqd24x6mlpd" path="res://60%.jpeg" id="6_w6ymk"]
+[ext_resource type="Texture2D" uid="uid://cj8fxhxyw4ouy" path="res://80% (2).png" id="7_pi43q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_83hce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qdn6n")
+}],
+"loop": true,
+"name": &"weather0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mfwf1")
+}],
+"loop": true,
+"name": &"weather100",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_50y8m")
+}],
+"loop": true,
+"name": &"weather20",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3wq66")
+}],
+"loop": true,
+"name": &"weather40",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_w6ymk")
+}],
+"loop": true,
+"name": &"weather60",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pi43q")
+}],
+"loop": true,
+"name": &"weather80",
+"speed": 5.0
+}]
 
 [node name="HistoryScreen" type="Node2D"]
 script = ExtResource("1_myj6d")
@@ -55,6 +112,13 @@ offset_bottom = 53.0
 theme_override_font_sizes/font_size = 20
 toggle_mode = true
 text = "Sorting By Oldest"
+
+[node name="WeatherBG" type="AnimatedSprite2D" parent="."]
+z_index = -300
+position = Vector2(208, 303.5)
+scale = Vector2(0.81295, 0.913043)
+sprite_frames = SubResource("SpriteFrames_83hce")
+animation = &"weather80"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="PrevPage" to="." method="_on_prev_page_pressed"]

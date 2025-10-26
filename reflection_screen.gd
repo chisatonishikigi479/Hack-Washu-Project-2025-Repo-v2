@@ -13,6 +13,8 @@ var currFlaggedSubIndex = 0
 var total_sentiment_improvement = 0.0
 var successful_improvements = 0
 var curr_card_instance = null
+
+var improvement_ratio = 0.0
 func _process(delta):
 	if int(GlobalData.currTime) == int(GlobalData.wakeUpTime):
 		get_tree().change_scene_to_file("res://WakeUpScreen.tscn")
@@ -31,6 +33,19 @@ func _process(delta):
 	
 	$TimeLabel.text = "Current Time: " + GlobalData.minutes_to_time_string(GlobalData.currTime)
 	$ImprovementCardProgress.text = "(" + str(currFlaggedSubIndex) + "/" + str(flaggedEventIndices.size()) +" completed)"
+	if flaggedEventIndices.size() > 0:
+		improvement_ratio = successful_improvements / flaggedEventIndices.size()
+		if improvement_ratio >= 0 and improvement_ratio <= 0.33:
+			$RainBG.play("heavyrain")
+		elif improvement_ratio > 0.33 and improvement_ratio <= 0.66:
+			$RainBG.play("mediumrain")
+		elif improvement_ratio > 0.66 and improvement_ratio < 1.0:
+			$RainBG.play("lightrain")
+		elif improvement_ratio >= 1.0:
+			$RainBG.play("norain")
+		
+	else:
+		$RainBG.play("norain")
 
 func generate_improvement_card():
 	curr_card_instance = cardscene.instantiate()

@@ -16,15 +16,22 @@ func _process(delta):
 	var comment = ""
 	if estimated_mood <= 0.2:
 		comment = "very down"
+		$WeatherBG.play("weather0")
 	elif estimated_mood > 0.2 and estimated_mood <= 0.4:
 		comment = "down"
+		$WeatherBG.play("weather20")
 	elif estimated_mood > 0.4 and estimated_mood < 0.6:
 		comment = "neutral"
+		$WeatherBG.play("weather40")
 	elif estimated_mood >= 0.6 and estimated_mood < 0.8:
 		comment = "cheerful"
+		$WeatherBG.play("weather80")
 	elif estimated_mood >= 0.8 and estimated_mood <= 1.0:
 		comment = "very cheerful"
+		$WeatherBG.play("weather100")
 	$EstimatedMoodLabel.text = "Estimated Current Mood: " + str(int(estimated_mood_percent)) + "%" + " (" + comment + ")"
+
+	
 
 	if int(GlobalData.currTime) == int(GlobalData.bedtime):
 		get_tree().change_scene_to_file("res://nighttime_screen.tscn")

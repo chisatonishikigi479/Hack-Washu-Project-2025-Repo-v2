@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://o3qkqt5fnys2"]
+[gd_scene load_steps=7 format=3 uid="uid://o3qkqt5fnys2"]
 
 [ext_resource type="Script" uid="uid://d2fj1edjv2tt1" path="res://reflection_screen.gd" id="1_7tipp"]
+[ext_resource type="Texture2D" uid="uid://ciqnlen61toy4" path="res://Heavy Rain.png" id="2_8h8u6"]
+[ext_resource type="Texture2D" uid="uid://dasjy413ux73e" path="res://Light Rain.png" id="3_q2brp"]
+[ext_resource type="Texture2D" uid="uid://qp255liitdcs" path="res://Medium Rain.png" id="3_yc58i"]
+[ext_resource type="Texture2D" uid="uid://801lb2hdtsyf" path="res://20%.png" id="5_o3xuu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7tipp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8h8u6")
+}],
+"loop": true,
+"name": &"heavyrain",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q2brp")
+}],
+"loop": true,
+"name": &"lightrain",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yc58i")
+}],
+"loop": true,
+"name": &"mediumrain",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o3xuu")
+}],
+"loop": true,
+"name": &"norain",
+"speed": 5.0
+}]
 
 [node name="ReflectionScreen" type="Node2D"]
 script = ExtResource("1_7tipp")
@@ -36,5 +75,12 @@ offset_right = 386.0
 offset_bottom = 592.0
 theme_override_font_sizes/normal_font_size = 23
 text = "Average Net Improvement: "
+
+[node name="RainBG" type="AnimatedSprite2D" parent="."]
+z_index = -200
+position = Vector2(232, 301)
+scale = Vector2(0.859875, 0.951964)
+sprite_frames = SubResource("SpriteFrames_7tipp")
+animation = &"lightrain"
 
 [connection signal="all_improvement_cards_complete" from="." to="." method="_on_all_improvement_cards_complete"]

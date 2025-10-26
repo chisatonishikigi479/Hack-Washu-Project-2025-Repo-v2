@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bshgkl4e5sk3n"]
+[gd_scene load_steps=4 format=3 uid="uid://bshgkl4e5sk3n"]
 
 [ext_resource type="Script" uid="uid://bb1v82h62cr4h" path="res://nighttime_screen.gd" id="1_4gbvk"]
+[ext_resource type="Texture2D" uid="uid://m5xknc23or1l" path="res://nightsky.png" id="2_xp3g2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwsav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xp3g2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="NighttimeScreen" type="Node2D"]
 script = ExtResource("1_4gbvk")
@@ -37,5 +49,11 @@ offset_right = 382.0
 offset_bottom = 606.0
 theme_override_font_sizes/normal_font_size = 32
 text = "(You beat your sentiment goal of 50% by 0%)"
+
+[node name="BG" type="AnimatedSprite2D" parent="."]
+z_index = -300
+position = Vector2(201.5, 291)
+scale = Vector2(0.855238, 1.17563)
+sprite_frames = SubResource("SpriteFrames_nwsav")
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
