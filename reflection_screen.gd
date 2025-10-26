@@ -30,6 +30,7 @@ func _process(delta):
 func generate_improvement_card():
 	curr_card_instance = cardscene.instantiate()
 	curr_card_instance.index = flaggedEventIndices[currFlaggedSubIndex]
+	curr_card_instance.global_position = Vector2(0, 300)
 	curr_card_instance.improvement_submitted.connect(self._on_improvement_card_submitted)
 	add_child(curr_card_instance)
 	curr_card_instance.visible = true
