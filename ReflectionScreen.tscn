@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://o3qkqt5fnys2"]
+[gd_scene load_steps=2 format=3 uid="uid://o3qkqt5fnys2"]
+
+[ext_resource type="Script" uid="uid://d2fj1edjv2tt1" path="res://reflection_screen.gd" id="1_7tipp"]
 
 [node name="ReflectionScreen" type="Node2D"]
+script = ExtResource("1_7tipp")
+
+[node name="TimeLabel" type="RichTextLabel" parent="."]
+offset_right = 406.0
+offset_bottom = 71.0
+theme_override_font_sizes/normal_font_size = 35
+text = "Current Time:"
+
+[node name="CongratsLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 6.0
+offset_top = 92.0
+offset_right = 394.0
+offset_bottom = 267.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Congratulations, all your recorded events surpassed your mood goal for the day!"
+
+[connection signal="all_improvement_cards_complete" from="." to="." method="_on_all_improvement_cards_complete"]
