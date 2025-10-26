@@ -80,6 +80,7 @@ func _on_all_improvement_cards_complete() -> void:
 	$CongratsLabel.text = message
 	$CongratsLabel.visible = true
 	
+	$ImprovementCardProgress.visible = false
 	$NetImprovementLabel.text = "Average Net Improvement: " + str(int(100.0 * average_sentiment_improvement)) + "%"
 	$NetImprovementLabel.visible = true
 	#do some more stuff
