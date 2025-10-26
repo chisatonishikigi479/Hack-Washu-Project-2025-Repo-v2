@@ -15,16 +15,16 @@ text = "At 12:00PM, you felt neutral due to \"reasoning\". What might you do to 
 scroll_active = false
 
 [node name="ReflectionResponseBox" type="TextEdit" parent="."]
-offset_left = 3.0
-offset_top = 164.0
-offset_right = 402.0
-offset_bottom = 238.0
+offset_left = 2.0
+offset_top = 122.0
+offset_right = 401.0
+offset_bottom = 196.0
 
 [node name="SubmitButton" type="Button" parent="."]
-offset_left = 110.0
-offset_top = 246.0
-offset_right = 281.0
-offset_bottom = 308.0
+offset_left = 113.0
+offset_top = 203.0
+offset_right = 284.0
+offset_bottom = 265.0
 theme_override_font_sizes/font_size = 35
 text = "Submit"
 

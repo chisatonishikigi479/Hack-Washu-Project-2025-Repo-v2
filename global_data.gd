@@ -16,7 +16,7 @@ var cooldownstarted = 0.0
 var cooldownstartedbool = false
 var cooldownminutes = 30.0
 
-@export var customSpeedMultiplier = 1800.0 #change to 1.0 later
+@export var customSpeedMultiplier = 600.0 #change to 1.0 later
 
 func _ready():
 	prompt_responses_during_day.append("") #0-index prompt is automatically empty bc the app doesn't ask how you're feeling on the title screen

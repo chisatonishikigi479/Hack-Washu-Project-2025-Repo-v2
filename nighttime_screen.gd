@@ -11,15 +11,15 @@ func _process(delta):
 		var estimated_mood = GlobalData.get_current_mood(GlobalData.bedtime)
 		var comment = ""
 		if estimated_mood <= 0.2:
-			comment = "very high"
+			comment = "very low"
 		elif estimated_mood > 0.2 and estimated_mood <= 0.4:
-			comment = "high"
+			comment = "low"
 		elif estimated_mood > 0.4 and estimated_mood < 0.6:
 			comment = "neutral"
 		elif estimated_mood >= 0.6 and estimated_mood < 0.8:
-			comment = "low"
+			comment = "high"
 		elif estimated_mood >= 0.8 and estimated_mood <= 1.0:
-			comment = "very low"
+			comment = "very high"
 		
 		if GlobalData.username == "":
 			$HowTheDayEnded.text = "Hi, you ended the day on a " + comment + " note (" + str(int(100.0 * estimated_mood)) + "%). Before going to bed, now it's time to reflect. "
