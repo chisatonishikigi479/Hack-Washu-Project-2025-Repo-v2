@@ -68,6 +68,7 @@ offset_left = 37.0
 offset_top = 12.0
 offset_right = 381.0
 offset_bottom = 64.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 30
 text = "Current Time: "
 
@@ -101,6 +102,7 @@ offset_left = 41.0
 offset_top = 251.0
 offset_right = 376.0
 offset_bottom = 328.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 27
 text = "Tell me something about your day..."
 
@@ -157,6 +159,7 @@ offset_left = 17.0
 offset_top = 54.0
 offset_right = 200.0
 offset_bottom = 113.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Estimated Current Mood: 50% (neutral)"
 
 [node name="WeatherBG" type="AnimatedSprite2D" parent="."]
