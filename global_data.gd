@@ -34,6 +34,11 @@ func minutes_to_time_string(minutes: float) -> String:
 	if hours == 0:
 		display_hours = 12  
 	return "%d:%02d %s" % [display_hours, mins, period]
+	
+func reset_variables():
+	prompt_responses_during_day = []
+	mood_time_stamps = []
+	mood_data_points = []
 
 func _process(delta: float):
 	currTime = currTime + (customSpeedMultiplier) * delta * (1.0 / 60.0)

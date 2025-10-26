@@ -4,6 +4,7 @@ var dataHasBeenSet = false
 
 func _process(delta):
 	if not dataHasBeenSet:
+		GlobalData.reset_variables()
 		if GlobalData.username != "":
 			$NameLabel.text = GlobalData.username + "!"
 		else:
