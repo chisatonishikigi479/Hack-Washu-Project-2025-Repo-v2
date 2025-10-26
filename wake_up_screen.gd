@@ -11,6 +11,9 @@ func _process(delta):
 		$HowAreYouFeeling.text = "How Are You Feeling on this Beautiful " + GlobalData.get_current_weekday() + " Morning?"
 		dataHasBeenSet = true 
 	$CurrentTimeLabel.text = "Current Time: " + GlobalData.minutes_to_time_string(GlobalData.currTime)
+	
+	if int(GlobalData.currTime) == int(GlobalData.bedtime):
+		get_tree().change_scene_to_file("res://nighttime_screen.tscn")
 
 
 func _on_button_pressed() -> void:
