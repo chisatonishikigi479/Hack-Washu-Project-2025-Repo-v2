@@ -13,14 +13,19 @@ func _process(delta):
 		var comment = ""
 		if mood <= 0.2:
 			comment = "very down"
+			$WeatherIcon.play("0percent")
 		elif mood > 0.2 and mood <= 0.4:
 			comment = "down"
+			$WeatherIcon.play("20percent")
 		elif mood > 0.4 and mood < 0.6:
 			comment = "neutral"
+			$WeatherIcon.play("40percent")
 		elif mood >= 0.6 and mood < 0.8:
 			comment = "cheerful"
+			$WeatherIcon.play("80percent")
 		elif mood >= 0.8 and mood <= 1.0:
 			comment = "very cheerful"
+			$WeatherIcon.play("100percent")
 		$MoodLabel.text = "Mood: " + str(int(mood * 100.0)) + "%" + " (" + comment + ")"
 		$ExplanationLabel.text = "Your Thoughts: " + "\"" + GlobalData.prompt_responses_during_day[index] + "\""
 		

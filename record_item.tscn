@@ -1,12 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkc2yw0uygx2f"]
+[gd_scene load_steps=8 format=3 uid="uid://dkc2yw0uygx2f"]
 
 [ext_resource type="Script" uid="uid://db7sthfbn2y1g" path="res://record_item.gd" id="1_jd0rc"]
+[ext_resource type="Texture2D" uid="uid://cd0cchs8rg8ui" path="res://0_icontransparent.png" id="2_h2de7"]
+[ext_resource type="Texture2D" uid="uid://bhst1xhmp4wd5" path="res://100_icontransparent.png" id="3_hie51"]
+[ext_resource type="Texture2D" uid="uid://dbsqcm00v0ayf" path="res://20_icontransparent.png" id="3_wflej"]
+[ext_resource type="Texture2D" uid="uid://ddjpojyj0cmai" path="res://40_icontransparent.png" id="4_88pdg"]
+[ext_resource type="Texture2D" uid="uid://b56s3o855gkpj" path="res://80_icontransparent.png" id="6_hie51"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wflej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h2de7")
+}],
+"loop": true,
+"name": &"0percent",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hie51")
+}],
+"loop": true,
+"name": &"100percent",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wflej")
+}],
+"loop": true,
+"name": &"20percent",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_88pdg")
+}],
+"loop": true,
+"name": &"40percent",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_hie51")
+}],
+"loop": true,
+"name": &"80percent",
+"speed": 5.0
+}]
 
 [node name="RecordItem" type="Node2D"]
 script = ExtResource("1_jd0rc")
 
 [node name="WeatherIcon" type="AnimatedSprite2D" parent="."]
-position = Vector2(60, 85)
+position = Vector2(68, 57)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_wflej")
+animation = &"0percent"
 
 [node name="MoodLabel" type="RichTextLabel" parent="."]
 offset_left = 137.0
