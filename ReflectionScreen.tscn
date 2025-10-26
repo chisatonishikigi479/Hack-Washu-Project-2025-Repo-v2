@@ -28,4 +28,13 @@ offset_bottom = 610.0
 theme_override_font_sizes/normal_font_size = 25
 text = "(1/1 completed)"
 
+[node name="NetImprovementLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 2.0
+offset_top = 514.0
+offset_right = 386.0
+offset_bottom = 592.0
+theme_override_font_sizes/normal_font_size = 23
+text = "Average Net Improvement: "
+
 [connection signal="all_improvement_cards_complete" from="." to="." method="_on_all_improvement_cards_complete"]

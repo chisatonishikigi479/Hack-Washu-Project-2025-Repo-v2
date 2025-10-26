@@ -70,13 +70,17 @@ func _on_all_improvement_cards_complete() -> void:
 	if flaggedEventIndices.size() == 0:
 		message = "Congratulations, all your recorded events surpassed your mood goal for the day!!"
 	elif successful_improvements == flaggedEventIndices.size():
-		message = "Excellent! All your improvements met the sentiment goal! The rain has completely dissipated."
+		message = "Excellent! All your improvements have met the sentiment goal! The rain has completely dissipated."
 	elif successful_improvements > flaggedEventIndices.size() / 2:
-		message = "Good job! The majority of your improvements were positive. The rain is lightening."
+		message = "Good job! The majority of your improvements met your personal goal. The rain is lightening to a drizzle."
 	else:
 		message = "You at least put effort reflecting on your subpar events. Keep working on positive thinking!"
 	
+	
 	$CongratsLabel.text = message
 	$CongratsLabel.visible = true
+	
+	$NetImprovementLabel.text = "Average Net Improvement: " + str(int(100.0 * average_sentiment_improvement)) + "%"
+	$NetImprovementLabel.visible = true
 	#do some more stuff
 	pass # Replace with function body.
